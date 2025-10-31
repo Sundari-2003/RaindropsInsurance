@@ -1,0 +1,37 @@
+<div class="container py-4">
+  <h2 class="text-center mb-4 text-primary">💰 Available Insurance Plans</h2>
+  <p class="text-center text-muted">
+    The premiums displayed below are **personalized** based on the quote details you provided.
+  </p>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let plan of plansWithPremium$ | async">
+      <div class="card h-100 shadow-sm border-info">
+        <div class="card-header bg-info text-white">
+          <h4 class="mb-0">{{ plan.planName }}</h4>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <p class="card-text">{{ plan.description }}</p>
+          <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item">
+              Base Premium: <span class="fw-bold text-muted">₹{{ plan.baseAmt | number }} (Before Surcharge)</span>
+            </li>
+            <li class="list-group-item bg-light">
+              <span class="fs-5 fw-bold text-success">
+                Your Personalized Premium: ₹{{ plan.calculatedPremium | number }}
+              </span>
+              <small class="text-muted d-block">(Includes age/health factors)</small>
+            </li>
+            <li class="list-group-item">Validity: **{{ plan.validity }}** days</li>
+          </ul>
+          
+          <div class="mt-auto text-end">
+            <button class="btn btn-success btn-lg" (click)="selectPlan(plan.planId)">
+              Select Plan &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

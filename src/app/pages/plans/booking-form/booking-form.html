@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div *ngIf="selectedPlan" class="card shadow-lg p-4">
+      <div *ngIf="!bookingSuccess">
+        <h3 class="card-title text-center text-primary mb-4">Book Your Insurance Plan</h3>
+
+        <div class="alert alert-info p-3 mb-4">
+          <p class="mb-1">**Plan:** <span class="fw-bold">{{ selectedPlan.planName }}</span></p>
+          <p class="mb-1">**Premium:** <span class="fw-bold text-success fs-4">₹{{ finalPremium | number }}</span> ({{ bookingForm?.get('paymentFreq')?.value | titlecase }})</p>
+          <p class="mb-0">**Validity:** {{ selectedPlan.validity }} days</p>
+        </div>
+
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+          <h5 class="mt-4 border-bottom pb-2">1. Contact Details</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label">Full Name</label>
+              <input id="name" type="text" formControlName="name" class="form-control" 
+                     [class.is-invalid]="f['name'].invalid && f['name'].touched">
+              <div class="invalid-feedback" *ngIf="f['name'].errors?.['required']">Name is required.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="city" class="form-label">City</label>
+              <input id="city" type="text" formControlName="city" class="form-control"
+                     [class.is-invalid]="f['city'].invalid && f['city'].touched">
+              <div class="invalid-feedback" *ngIf="f['city'].errors?.['required']">City is required.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone (10 Digits)</label>
+              <input id="phone" type="tel" formControlName="phone" class="form-control"
+                     [class.is-invalid]="f['phone'].invalid && f['phone'].touched">
+              <div class="invalid-feedback">
+                <span *ngIf="f['phone'].errors?.['required']">Phone number is required.</span>
+                <span *ngIf="f['phone'].errors?.['pattern']">Must be a 10-digit number.</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email Address</label>
+              <input id="email" type="email" formControlName="email" class="form-control"
+                     [class.is-invalid]="f['email'].invalid && f['email'].touched">
+              <div class="invalid-feedback">
+                <span *ngIf="f['email'].errors?.['required']">Email is required.</span>
+                <span *ngIf="f['email'].errors?.['email']">Enter a valid email address.</span>
+              </div>
+            </div>
+          </div>
+
+          <h5 class="mt-5 border-bottom pb-2">2. Payment Details</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="paymentMode" class="form-label">Payment Mode</label>
+              <select id="paymentMode" formControlName="paymentMode" class="form-select">
+                <option value="credit card">Credit Card</option>
+                <option value="debit card">Debit Card</option>
+                <option value="net banking">Net Banking</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="paymentFreq" class="form-label">Payment Frequency</label>
+              <select id="paymentFreq" formControlName="paymentFreq" class="form-select">
+                <option value="yearly">Yearly</option>
+                <option value="half-yearly">Half Yearly</option>
+                <option value="monthly">Monthly</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="cardNumber" class="form-label">Card Number</label>
+              <input id="cardNumber" type="text" formControlName="cardNumber" class="form-control"
+                     placeholder="XXXX-XXXX-XXXX-XXXX"
+                     [class.is-invalid]="f['cardNumber'].invalid && f['cardNumber'].touched">
+              <div class="invalid-feedback">
+                <span *ngIf="f['cardNumber'].errors?.['required']">Card number is required.</span>
+                <span *ngIf="f['cardNumber'].errors?.['pattern']">Enter a valid card number (13-19 digits).</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid mt-5">
+            <button type="submit" class="btn btn-success btn-lg" 
+                    [disabled]="bookingForm.invalid || isSubmitting">
+              <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status"></span>
+              {{ isSubmitting ? 'Processing...' : 'Confirm and Pay ₹' + (finalPremium | number) }}
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div *ngIf="bookingSuccess" class="text-center py-5">
+        <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+        <h3 class="text-success mt-3">Subscription Successful! 🎉</h3>
+        <p class="lead">Your {{ selectedPlan.planName }} is now active.</p>
+        <p class="text-muted">Redirecting to the home page shortly...</p>
+      </div>
+    </div>
+
+    <div *ngIf="!selectedPlan && !bookingSuccess" class="text-center py-5">
+        <h3 class="text-warning">Loading Plan Details...</h3>
+    </div>
+  </div>
+</div>
