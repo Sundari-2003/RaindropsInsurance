@@ -1,0 +1,14 @@
+.logo-img {
+  max-width: 220px;          /* keeps it logo-sized but responsive */
+  height: auto;
+  object-fit: contain;       /* keeps proportions clean */
+  margin: 0 auto;            /* centers the image horizontally */
+  display: block;
+  cursor: pointer;           /* gives logo-like interactivity */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.03);    /* subtle logo hover effect */
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}

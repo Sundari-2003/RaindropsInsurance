@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+    
+    <div class="row row-cols-1 g-3">
+      <div class="col" *ngFor="let plan of allPlans$ | async; let i = index">
+        
+        <div class="card shadow-sm border-primary">
+          
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center">
+              
+              <h4 class="mb-0 text-primary fw-bold">{{ plan.planName }}</h4>
+              
+              <button class="btn btn-outline-primary" 
+                      type="button" 
+                      data-bs-toggle="collapse" 
+                      [attr.data-bs-target]="'#details-' + plan.planId" 
+                      aria-expanded="false" 
+                      [attr.aria-controls]="'details-' + plan.planId">
+                View Details
+              </button>
+            </div>
+            
+            <div class="collapse mt-3" [id]="'details-' + plan.planId">
+              <hr class="text-primary">
+              
+              <p class="card-text lead text-muted">{{ plan.description }}</p>
+
+              <ul class="list-group list-group-flush mb-4 border rounded">
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                  <span class="d-block text-muted fw-bold">Starting Premium (Base)</span>
+                  <span class="fs-5 fw-bold text-dark">
+                    ₹{{ plan.baseAmt | number }}
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span class="d-block text-muted">Plan Validity</span>
+                  <strong>{{ plan.validity }} days</strong>
+                </li>
+              </ul>
+              
+              <!-- <div class="text-end">
+                <a [routerLink]="['/book-plan', plan.planId]" class="btn btn-success btn-lg">
+                  Select & Buy &rarr;
+                </a>
+              </div> -->
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

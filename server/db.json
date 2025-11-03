@@ -5,19 +5,53 @@
       "planName": "Care Life Plan",
       "description": "The Care Life Plan safeguards you from unforeseen circumstances by providing instant coverage with no waiting period. Emergency services such as immediate ambulance, specialist consultation and complete assistance are its major features.",
       "baseAmt": 2500,
-      "validity": 15
+      "validity": 15,
+      "id": "0f20"
     },
     {
       "planId": 2,
       "planName": "Good Health Plan",
       "description": "The Good Health Plan is our best selling plan. Facilities like Air Ambulance and Buy Now and Pay Later options make it a stand out in the industry.",
       "baseAmt": 2500,
-      "validity": 30
+      "validity": 30,
+      "id": "d3e7"
+    },
+    {
+      "planId": 3,
+      "planName": "MaxProtect Family Coverage",
+      "description": "Comprehensive coverage designed for the entire family. Includes annual health checkups, dental coverage, and a no-claim bonus for up to 5 years.",
+      "baseAmt": 8500,
+      "validity": 365,
+      "id": "a9b1"
+    },
+    {
+      "planId": 4,
+      "planName": "Travel Safe Global",
+      "description": "Insurance tailored for international travel. Covers medical emergencies abroad, flight cancellation reimbursement, and lost baggage compensation.",
+      "baseAmt": 4200,
+      "validity": 90,
+      "id": "c7f3"
+    },
+    {
+      "planId": 5,
+      "planName": "Future Secure Retirement",
+      "description": "A long-term savings and protection plan with guaranteed returns. Offers a large sum assured and optional critical illness rider after the initial five-year period.",
+      "baseAmt": 15000,
+      "validity": 1825,
+      "id": "e2g5"
+    },
+    {
+      "planId": 6,
+      "planName": "Digital Shield",
+      "description": "Modern protection against identity theft, cyber-fraud, and phishing scams. Includes 24/7 dark web monitoring and a legal assistance helpline.",
+      "baseAmt": 1800,
+      "validity": 365,
+      "id": "h4j7"
     }
   ],
   "bookings": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Justin",
       "city": "Chennai",
       "phone": "2780808989",
@@ -32,7 +66,7 @@
       "paymentFreq": "yearly"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Ravi Kumar",
       "city": "Faridabad",
       "phone": "+919899999990",
@@ -75,6 +109,36 @@
       "planName": "Care Life Plan",
       "validity": 15,
       "premiumAmt": 2500
+    },
+    {
+      "id": "7085",
+      "name": "Shruthi Sridhar",
+      "city": "Tiruchirappalli",
+      "phone": "6385796477",
+      "email": "sundari.sridhar01@example.com",
+      "paymentMode": "credit card",
+      "cardNumber": "1234-1234-1234-1234",
+      "paymentFreq": "monthly",
+      "age": 30,
+      "planId": 1,
+      "planName": "Care Life Plan",
+      "validity": 15,
+      "premiumAmt": 2500
+    },
+    {
+      "id": "40bd",
+      "name": "Sridhar",
+      "city": "Thuraiyur",
+      "phone": "9952156496",
+      "email": "sridhar01@gmail.com",
+      "paymentMode": "credit card",
+      "cardNumber": "3210321032103210",
+      "paymentFreq": "monthly",
+      "age": 30,
+      "planId": 5,
+      "planName": "Future Secure Retirement",
+      "validity": 1825,
+      "premiumAmt": 16500
     }
   ]
 }

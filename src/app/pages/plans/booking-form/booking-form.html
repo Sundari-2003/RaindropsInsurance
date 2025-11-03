@@ -5,9 +5,11 @@
         <h3 class="card-title text-center text-primary mb-4">Book Your Insurance Plan</h3>
 
         <div class="alert alert-info p-3 mb-4">
-          <p class="mb-1">**Plan:** <span class="fw-bold">{{ selectedPlan.planName }}</span></p>
-          <p class="mb-1">**Premium:** <span class="fw-bold text-success fs-4">₹{{ finalPremium | number }}</span> ({{ bookingForm?.get('paymentFreq')?.value | titlecase }})</p>
-          <p class="mb-0">**Validity:** {{ selectedPlan.validity }} days</p>
+          <p class="mb-1"><strong>Plan:</strong> <span class="fw-bold">{{ selectedPlan.planName }}</span></p>
+          
+          <p class="mb-1"><strong>Premium:</strong> <span class="fw-bold text-success fs-4">₹{{ finalPremium | number }}</span> ({{ bookingForm?.get('paymentFreq')?.value | titlecase }})</p>
+          
+          <p class="mb-0"><strong>Validity:</strong> {{ selectedPlan.validity }} days</p>
         </div>
 
         <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
